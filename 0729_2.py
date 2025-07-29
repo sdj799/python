@@ -1,5 +1,3 @@
-from datetime import datetime
-
 class Info:
     def __init__(self, breed):
         self._breed = breed
@@ -70,9 +68,7 @@ class Food(Product):
         self.expiration_date = expiration_date
     
     def is_expired(self, current_date):
-        exp_date = datetime.strptime(self.expiration_date, "%Y-%m-%d")
-        curr_date = datetime.strptime(current_date, "%Y-%m-%d")
-        if curr_date > exp_date:
+        if current_date > self.expiration_date:
             print(f"{self.name}는 유통기한이 지났습니다")
         else:
             print(f"{self.name}는 유통기한이 지나지 않았습니다")
@@ -86,6 +82,6 @@ tv = Electronic("스마트 TV", 1500000, 5, 24)
 tv.extend_warranty(12)
 tv.display_info()
 
-apple = Food("사과", 3000, 50, "2025-07-28")
+apple = Food("사과", 3000, 50, "2025-07-30")
 apple.is_expired("2025-07-29")
 apple.display_info()

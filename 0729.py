@@ -22,6 +22,11 @@ class Person:
     def __init__(self, name, age):
         self.__name = name # 인스턴스 변수
         self.__age = age
+
+# 소멸자
+    def __del__(self):
+        # 객체가 사라질때 자동으로 호출되는 매서드
+        print(f"{self.name} 삭제되었습니다.")
     
     def introduce(self): # 인스턴스 메서드
         print(f"안녕하세요! 제 이름은 {self.__name} 이고, {self.__age}살 입니다.")
