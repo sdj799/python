@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 plt.rcParams['font.family'] = ['DejaVu Sans', 'Malgun Gothic']  
 plt.rcParams['axes.unicode_minus'] = False 
 
+# 월별 이용정보
+
 df = pd.read_csv('서울특별시 공공자전거 이용정보(월별)_24.1-6.csv', encoding='cp949')
 df2 = pd.read_csv('서울특별시 공공자전거 이용정보(월별)_24.7-12.csv', encoding='cp949')
 df_all = pd.concat([df, df2], ignore_index = False)
@@ -35,6 +37,8 @@ plt.grid()
 plt.tight_layout()
 plt.show()
 
+# 대여소별 이용정보
+
 df = pd.read_csv('서울특별시 공공자전거 대여소별 이용정보(월별)_24.1-6.csv', encoding='cp949')
 df1 = pd.read_csv('서울특별시 공공자전거 대여소별 이용정보(월별)_24.7-12.csv', encoding='cp949')
 df_all = pd.concat([df, df1], ignore_index = False)
@@ -44,6 +48,7 @@ df_location_sorted = df_location.sort_values(by='대여건수', ascending=False)
 
 print(df_location_sorted)
 
+# 대여소별 그래프
 fig, ax1 = plt.subplots(figsize=(14, 7))
 x = np.arange(len(df_location_sorted.index))
 width = 0.3
@@ -69,3 +74,4 @@ handles, labels = zip(*lines_labels)
 ax1.legend(handles, labels, loc='upper right')
 plt.tight_layout()
 plt.show()
+
